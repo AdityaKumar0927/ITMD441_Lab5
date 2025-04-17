@@ -1,72 +1,38 @@
-function toTwoDecimals(num) {
-    return parseFloat(num).toFixed(2);
-  }
-  
-  function getConversionRate(currency) {
-    if (currency === "EUR") {
-      return 0.95;
-    } else if (currency === "INR") {
-      return 85;
+function two(n){return parseFloat(n).toFixed(2)}
+function rate(c){return c==="EUR"?0.95:c==="INR"?85:1}
+document.addEventListener("DOMContentLoaded",()=>{
+  const bill=document.getElementById("billTotal")
+  const rng=document.getElementById("tipRange")
+  const pct=document.getElementById("tipPercent")
+  const tAmt=document.getElementById("tipAmount")
+  const tax=document.getElementById("totalWithTax")
+  const tot=document.getElementById("totalBillTipTax")
+  const cAmt=document.getElementById("convertedTip")
+  const cTot=document.getElementById("convertedTotal")
+  const cur=document.getElementById("currencySelect")
+  const err=document.getElementById("billTotalError")
+  function calc(){
+    err.textContent=""
+    let raw=bill.value.trim()
+    if(raw==="")raw="0"
+    if(isNaN(raw)||Number(raw)<0){err.textContent="Enter a non‑negative number.";return}
+    const b=Number(raw)
+    const p=Number(rng.value)
+    pct.value=p
+    const taxVal=b>0?b*1.11:0
+    const tip=b*(p/100)
+    const grand=taxVal+tip
+    if(b===0){
+      tAmt.value="";tax.value="";tot.value="";cAmt.value="";cTot.value=""
+      return
     }
-    return 1;
+    tAmt.value=two(tip)
+    tax.value=two(taxVal)
+    tot.value=two(grand)
+    const r=rate(cur.value)
+    cAmt.value=two(tip*r)
+    cTot.value=two(grand*r)
   }
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    const billTotalInput = document.getElementById("billTotal");
-    const tipRange = document.getElementById("tipRange");
-    const tipPercentOutput = document.getElementById("tipPercent");
-    const tipAmountInput = document.getElementById("tipAmount");
-    const totalWithTaxInput = document.getElementById("totalWithTax");
-    const totalBillTipTaxInput = document.getElementById("totalBillTipTax");
-    const convertedTipInput = document.getElementById("convertedTip");
-    const convertedTotalInput = document.getElementById("convertedTotal");
-    const currencySelect = document.getElementById("currencySelect");
-    const billTotalError = document.getElementById("billTotalError");
-  
-    function calculate() {
-      billTotalError.textContent = "";
-      let billValue = billTotalInput.value.trim();
-  
-      if (billValue === "") {
-        billValue = "0";
-      }
-  
-      if (isNaN(billValue) || Number(billValue) < 0) {
-        billTotalError.textContent = "Please enter a valid, non-negative number for Bill Total.";
-        return;
-      }
-  
-      const bill = Number(billValue);
-      const tipPercent = Number(tipRange.value);
-      tipPercentOutput.value = tipRange.value;
-  
-      let totalWithTax = 0;
-      if (bill > 0) {
-        totalWithTax = bill + bill * 0.11;
-      }
-      const tipAmount = bill * (tipPercent / 100);
-      const totalBillTipTax = totalWithTax + tipAmount;
-  
-      tipAmountInput.value = toTwoDecimals(tipAmount);
-      totalWithTaxInput.value = toTwoDecimals(totalWithTax);
-      totalBillTipTaxInput.value = toTwoDecimals(totalBillTipTax);
-  
-      const rate = getConversionRate(currencySelect.value);
-      const convertedTip = tipAmount * rate;
-      const convertedTotal = totalBillTipTax * rate;
-      convertedTipInput.value = toTwoDecimals(convertedTip);
-      convertedTotalInput.value = toTwoDecimals(convertedTotal);
-  
-      if (bill === 0) {
-        tipAmountInput.value = "";
-        totalWithTaxInput.value = "";
-        totalBillTipTaxInput.value = "";
-        convertedTipInput.value = "";
-        convertedTotalInput.value = "";
-      }
-    }
-  
-    document.getElementById("tipForm").addEventListener("input", calculate);
-    calculate();
-  });
-  
+  document.getElementById("tipForm").addEventListener("input",calc)
+  calc()
+})
