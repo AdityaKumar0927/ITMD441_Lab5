@@ -1,60 +1,98 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #dddddd;
-    margin: 20px;
-    padding: 20px;
-    max-width: 600px;
+:root{
+    --bg:#f4f4f4;
+    --card:#ffffff;
+    --accent:#2563eb;
+    --disabled:#ececec;
+    --error:#b91c1c;
+    --radius:0.75rem;
   }
   
-  h1 {
-    font-size: 2em;
-    margin-bottom: 1em;
+  *{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,Arial,sans-serif}
+  
+  body{
+    background:var(--bg);
+    display:flex;
+    justify-content:center;
+    align-items:flex-start;
+    min-height:100vh;
+    padding:2rem;
   }
   
-  form {
-    background-color: #cccccc;
-    padding: 20px;
-    border-radius: 8px;
+  .card{
+    background:var(--card);
+    padding:2rem 2.5rem;
+    border-radius:var(--radius);
+    box-shadow:0 10px 20px rgba(0,0,0,.08);
+    width:100%;
+    max-width:420px;
   }
   
-  label {
-    display: block;
-    margin-top: 1em;
-    font-weight: bold;
+  h1{
+    margin-bottom:1.25rem;
+    font-size:2rem;
+    text-align:center;
   }
   
-  input[type="text"] {
-    display: block;
-    margin-top: 0.3em;
-    padding: 0.5em;
-    width: 90%;
-    box-sizing: border-box;
+  .rates{
+    background:#f9fafb;
+    border:1px solid #e5e7eb;
+    padding:0.75rem 1rem;
+    border-radius:var(--radius);
+    margin-bottom:1.5rem;
+    font-size:.9rem;
   }
   
-  input[disabled] {
-    background-color: #eeeeee;
+  form label{
+    margin-top:1rem;
+    display:block;
+    font-weight:600;
   }
   
-  input[type="range"] {
-    width: 90%;
-    margin: 0.5em 0;
+  input[type="text"],select{
+    margin-top:.4rem;
+    padding:.55rem .7rem;
+    width:100%;
+    border:1px solid #d1d5db;
+    border-radius:calc(var(--radius)/1.5);
+    font-size:1rem;
   }
   
-  output {
-    margin-left: 1em;
-    font-weight: bold;
+  input[disabled]{
+    background:var(--disabled);
+    color:#6b7280;
   }
   
-  select {
-    margin-top: 0.5em;
-    padding: 0.3em;
-    width: 95%;
-    box-sizing: border-box;
+  select{
+    background:#fff;
   }
   
-  .error {
-    color: red;
-    margin-top: 1em;
-    font-weight: bold;
+  .slider-group{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+    margin-top:1rem;
+  }
+  
+  input[type="range"]{
+    flex:1;
+    accent-color:var(--accent);
+  }
+  
+  output{
+    min-width:2.5rem;
+    text-align:center;
+    font-weight:700;
+  }
+  
+  .error{
+    color:var(--error);
+    margin-top:1rem;
+    min-height:1.25rem;
+  }
+  
+  @media (max-width:480px){
+    body{padding:1rem}
+    .card{padding:1.5rem}
+    h1{font-size:1.6rem}
   }
   
