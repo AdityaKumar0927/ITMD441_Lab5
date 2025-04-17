@@ -20,16 +20,16 @@
 
     <form id="tipForm" novalidate>
       <label for="billTotal">Bill Total $</label>
-      <input id="billTotal" type="text" autocomplete="off" />
+      <input id="billTotal" type="text" value="0" autocomplete="off" />
 
       <label for="totalWithTax">Total Bill with Tax (11%)</label>
-      <input id="totalWithTax" type="text" disabled />
+      <input id="totalWithTax" type="text" value="0.00" disabled />
 
       <label for="currencySelect">Select Currency</label>
       <select id="currencySelect">
-        <option value="USD">US Dollars ($)</option>
-        <option value="EUR">Euros (€)</option>
-        <option value="INR">Rupees (₹)</option>
+        <option value="USD">$ US Dollars</option>
+        <option value="EUR">€ Euros</option>
+        <option value="INR">₹ Rupees</option>
       </select>
 
       <div class="slider-group">
@@ -39,16 +39,16 @@
       </div>
 
       <label for="tipAmount">Tip Amount $</label>
-      <input id="tipAmount" type="text" disabled />
+      <input id="tipAmount" type="text" value="0.00" disabled />
 
       <label for="totalBillTipTax">Total Bill with Tip & Tax $</label>
-      <input id="totalBillTipTax" type="text" disabled />
+      <input id="totalBillTipTax" type="text" value="0.00" disabled />
 
       <label for="convertedTip">Converted Tip Amount</label>
-      <input id="convertedTip" type="text" disabled />
+      <input id="convertedTip" type="text" value="$0.00" disabled />
 
       <label for="convertedTotal">Converted Total Bill with Tip & Tax</label>
-      <input id="convertedTotal" type="text" disabled />
+      <input id="convertedTotal" type="text" value="$0.00" disabled />
 
       <p id="billTotalError" class="error"></p>
     </form>
