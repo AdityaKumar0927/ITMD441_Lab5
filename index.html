@@ -23,32 +23,32 @@
       <input id="billTotal" type="text" value="0" autocomplete="off" />
 
       <label for="totalWithTax">Total Bill with Tax (11%)</label>
-      <input id="totalWithTax" type="text" value="0.00" disabled />
+      <input id="totalWithTax" type="text" disabled />
 
       <label for="currencySelect">Select Currency</label>
       <select id="currencySelect">
-        <option value="USD">$ US Dollars</option>
-        <option value="EUR">€ Euros</option>
-        <option value="INR">₹ Rupees</option>
+        <option value="USD">US Dollars ($)</option>
+        <option value="EUR">Euros (€)</option>
+        <option value="INR">Rupees (₹)</option>
       </select>
 
       <div class="slider-group">
-        <label for="tipRange">Tip %</label>
+        <label for="tipRange">Tip %</label>
         <input id="tipRange" type="range" min="0" max="100" value="0" />
         <output id="tipPercent">0</output>
       </div>
 
-      <label for="tipAmount">Tip Amount $</label>
-      <input id="tipAmount" type="text" value="0.00" disabled />
+      <label for="tipAmount">Tip Amount</label>
+      <input id="tipAmount" type="text" disabled />
 
-      <label for="totalBillTipTax">Total Bill with Tip & Tax $</label>
-      <input id="totalBillTipTax" type="text" value="0.00" disabled />
+      <label for="totalBillTipTax">Total Bill with Tip & Tax</label>
+      <input id="totalBillTipTax" type="text" disabled />
 
       <label for="convertedTip">Converted Tip Amount</label>
-      <input id="convertedTip" type="text" value="$0.00" disabled />
+      <input id="convertedTip" type="text" disabled />
 
       <label for="convertedTotal">Converted Total Bill with Tip & Tax</label>
-      <input id="convertedTotal" type="text" value="$0.00" disabled />
+      <input id="convertedTotal" type="text" disabled />
 
       <p id="billTotalError" class="error"></p>
     </form>
